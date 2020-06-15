@@ -1,0 +1,38 @@
+body {
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+.grid {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.box {
+  width: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.card {
+  background: linear-gradient(
+    to bottom,
+    #1e5799 0%,
+    #207cca 51%,
+    #2989d8 94%,
+    #2989d8 94%,
+    #7db9e8 100%
+  );
+}
