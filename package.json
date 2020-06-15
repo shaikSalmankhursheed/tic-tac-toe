@@ -12,7 +12,8 @@
     "react-icons": "^3.10.0",
     "react-scripts": "3.4.1",
     "react-toastify": "^6.0.5",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "serve": "^11.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
