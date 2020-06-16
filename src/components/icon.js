@@ -6,7 +6,7 @@ const Icon = ({ name }) => {
     case "circle":
       return <FaRegCircle className="icons" color="red" size="5em" />;
     case "cross":
-      return <FaTimes className="icons" color="pink" size="5em" />;
+      return <FaTimes className="icons" color="yellow" size="5em" />;
     default:
       return <FaPen className="icons" />;
   }
