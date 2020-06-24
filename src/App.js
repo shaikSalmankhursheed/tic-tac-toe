@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Icon from "./components/icon";
 
+import Footer from "./components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -136,6 +137,7 @@ const App = () => {
           </div>
         </Col>
       </Row>
+<Footer />
     </Container>
   );
 };
