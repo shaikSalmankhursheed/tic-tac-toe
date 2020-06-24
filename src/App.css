@@ -36,3 +36,11 @@ body {
     #7db9e8 100%
   );
 }
+
+footer {
+  justify-content: center;
+  align-items: center;
+   font-size: 40px;
+  color: red;
+  font-weight: bold;
+}
