@@ -68,19 +68,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ```
-<svg width="0" height="0" style={{ position: "absolute" }}>
+<svg width="0" height="0" style="position: absolute;">
   <defs>
     <clipPath id="scoopClip" clipPathUnits="objectBoundingBox">
-      {/* M 0,0 -> Start top-left
-        L 0.50,0 -> Flat edge until 50%
-        C 0.55, 0.6, 0.90, 0.6, 0.95, 0 -> 
-          Start curve at 50%, 
-          Control points at 0.6 depth for smoothness, 
-          End curve at 95% 
-        L 1,0 -> Finish top edge
-        L 1,1 L 0,1 Z -> Close the box
-      */}
-      <path d="M 0,0 L 0.50,0 C 0.55,0.6, 0.90,0.6, 0.95,0 L 1,0 L 1,1 L 0,1 Z" />
+      <path d="M 0,0 L 0.60,0 C 0.65,0.8, 0.85,0.8, 0.90,0 L 1,0 L 1,1 L 0,1 Z"></path>
     </clipPath>
   </defs>
 </svg>
