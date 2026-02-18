@@ -81,3 +81,22 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
           </clipPath>
         </defs>
       </svg>
+
+
+
+
+
+
+
+
+
+
+
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>
+          <clipPath id="scoopClip" clipPathUnits="objectBoundingBox">
+          
+            <path d="M 0,0 L 0.52,0 C 0.58,0.4, 0.82,0.4, 0.88,0 L 1,0 L 1,1 L 0,1 Z" />
+          </clipPath>
+        </defs>
+      </svg>
