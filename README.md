@@ -71,7 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 <svg width="0" height="0" style="position: absolute;">
   <defs>
     <clipPath id="scoopClip" clipPathUnits="objectBoundingBox">
-      <path d="M 0,0 L 0.50,0 C 0.55,0.5, 0.75,0.5, 0.80,0 L 1,0 L 1,1 L 0,1 Z"></path>
+      <path d="M 0,0 L 0.53,0 C 0.58,0.5, 0.72,0.5, 0.77,0 L 1,0 L 1,1 L 0,1 Z"></path>
     </clipPath>
   </defs>
 </svg>
