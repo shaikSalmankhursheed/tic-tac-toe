@@ -66,8 +66,52 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
 ```
+import React from 'react';
+import { Select } from 'antd';
+
+const TagSelect = ({
+  label = "Business",
+  options = [],
+  defaultValue = ["BusinessABanking", "Tag"],
+  placeholder = "Please select",
+  width = 480,
+  onChange,
+  value,
+  ...rest // Allows for additional Ant Design props like allowClear, disabled, etc.
+}) => {
+  return (
+    <div>
+      {label && (
+        <label className="lmn-form-label lmn-d-block">
+          {label}
+        </label>
+      )}
+      <Select
+        mode="tags"
+        placeholder={placeholder}
+        style={{ width }}
+        defaultValue={defaultValue}
+        value={value}
+        onChange={onChange}
+        // Ensures the dropdown attaches to your specific app container
+        getPopupContainer={() => document.querySelector("#app-content") || document.body}
+        {...rest}
+      >
+        {options.map((item) => (
+          <Select.Option key={item} value={item}>
+            {item}
+          </Select.Option>
+        ))}
+      </Select>
+    </div>
+  );
+};
+
+export default TagSelect;
+
+----------------
+
  // Helper for Checkbox State
   const c = (checked, style = "", extra = {}) => ({ checked, style, ...extra });
 
