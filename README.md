@@ -67,6 +67,205 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 ```
+
+
+
+
+import React, { useState } from "react";
+import DelegateAccessForm from "./DelegateAccessForm";
+
+const ParentComponent = () => {
+  // Initialize with one empty form object
+  const [formDataList, setFormDataList] = useState([
+    {
+      id: Date.now(), // Unique ID for keying and tracking
+      business: [],
+      dataset: [],
+      datastream: [],
+      writeAccess: false,
+      adminAccess: false,
+      employees: [],
+    },
+  ]);
+
+  // Handler to update a specific form's data based on its ID
+  const handleFormChange = (id, fieldName, value) => {
+    setFormDataList((prevList) =>
+      prevList.map((form) =>
+        form.id === id ? { ...form, [fieldName]: value } : form
+      )
+    );
+  };
+
+  // Handler to add a new blank form
+  const addForm = () => {
+    setFormDataList([
+      ...formDataList,
+      {
+        id: Date.now(),
+        business: [],
+        dataset: [],
+        datastream: [],
+        writeAccess: false,
+        adminAccess: false,
+        employees: [],
+      },
+    ]);
+  };
+
+  // Handler to submit all data to your future API
+  const handleSubmit = () => {
+    console.log("Ready for API Call. Payload:", formDataList);
+    // api.post('/your-endpoint', { requests: formDataList })
+  };
+
+  return (
+    <div style={{ padding: 24 }}>
+      <h2>Delegate Access Requests</h2>
+
+      {formDataList.map((formData) => (
+        <DelegateAccessForm
+          key={formData.id}
+          data={formData}
+          onChange={(fieldName, value) =>
+            handleFormChange(formData.id, fieldName, value)
+          }
+        />
+      ))}
+
+      <div style={{ marginTop: 24, display: "flex", gap: 16 }}>
+        <button onClick={addForm}>+ Add Another Form</button>
+        <button onClick={handleSubmit} style={{ background: "blue", color: "white" }}>
+          Submit All to API
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ParentComponent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------
+
+
+
+
+
+import React from "react";
+import TagSelect from "../tagSelect/TagSelect";
+import { Checkbox } from "@citi-icg-172888/icgds-react";
+
+// Accept 'data' and 'onChange' as props from the parent
+const DelegateAccessForm = ({ data, onChange }) => {
+  // Hardcoded options (ideally fetched via API later)
+  const business_options = ["BusinessABanking", "Tag1", "Tag2", "Tag3"];
+  const dataset_options = ["BusinessABanking", "Tag1", "Tag2", "Tag3"];
+  const datastream_options = ["BusinessABanking", "Tag1", "Tag2", "Tag3"];
+  const employee_options = ["John Doe", "Sri Reddy", "Kannan Shash", "Sanjay Shah", "Aveer Malik"];
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 24,
+        background: "#F0F5F7",
+        padding: 16,
+        marginTop: 24,
+        border: "1px solid #ccc", // Added a border to visually separate multiple forms
+      }}
+    >
+      <div style={{ display: "flex", flexDirection: "row", gap: 16, width: "100%" }}>
+        <TagSelect
+          label="Business"
+          options={business_options}
+          defaultValue={data.business} // Use value from parent state
+          placeholder="Please select"
+          width={480}
+          onChange={(v) => onChange("business", v)} // Push change to parent
+        />
+        <TagSelect
+          label="Data Set"
+          options={dataset_options}
+          defaultValue={data.dataset}
+          placeholder="Please select"
+          width={480}
+          onChange={(v) => onChange("dataset", v)}
+        />
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+        <TagSelect
+          label="Data Stream"
+          options={datastream_options}
+          defaultValue={data.datastream}
+          placeholder="Please select"
+          width={"975px"}
+          onChange={(v) => onChange("datastream", v)}
+        />
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "row", gap: 48, width: "100%" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <label className="lmn-form-label lmn-d-block">Delegate Access Type</label>
+          <div style={{ display: "flex", flexDirection: "row", gap: 8, marginTop: 8 }}>
+            <Checkbox
+              size={"default"}
+              checked={data.writeAccess} // Controlled by parent
+              onChange={(e) => onChange("writeAccess", e.target.checked)} // Note: Check how your library returns events
+            >
+              Write
+            </Checkbox>
+            <Checkbox
+              size={"default"}
+              checked={data.adminAccess}
+              onChange={(e) => onChange("adminAccess", e.target.checked)}
+            >
+              Admin
+            </Checkbox>
+          </div>
+        </div>
+        
+        <div>
+          <TagSelect
+            label="Search and select the Employee Names to Delegate"
+            options={employee_options}
+            defaultValue={data.employees}
+            placeholder="Please select"
+            width={"790px"}
+            onChange={(v) => onChange("employees", v)} // Fixed the copy-paste bug from your screenshot here!
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DelegateAccessForm;
+
+
+
+
+
+-----------------------------------
+
 import React from 'react';
 import { Select } from 'antd';
 
