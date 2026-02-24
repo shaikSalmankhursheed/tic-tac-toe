@@ -68,6 +68,235 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 ```
 
+import React from "react";
+
+const data = [
+  {
+    location: "NJ",
+    incidents: [
+      { level: "P1", count: 23, colorClass: "badge-p1" },
+      { level: "P2", count: 18, colorClass: "badge-p2" },
+      { level: "P3", count: 56, colorClass: "badge-p3" },
+      { level: "P4", count: 123, colorClass: "badge-p4" },
+    ],
+  },
+  {
+    location: "NY",
+    incidents: [
+      { level: "P1", count: 23, colorClass: "badge-p1" },
+      { level: "P2", count: 18, colorClass: "badge-p2" },
+      { level: "P3", count: 56, colorClass: "badge-p3" },
+      { level: "P4", count: 123, colorClass: "badge-p4" },
+    ],
+  },
+];
+
+export default function App() {
+  return (
+    <>
+      <style>
+        {`
+          /* Overall Page Wrapper */
+          .status-bar-wrapper {
+            padding: 40px 20px;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+          }
+
+          /* The Main White Pill Container */
+          .status-bar {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 50px;
+            padding: 6px;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            height: fit-content;
+          }
+
+          /* LEFT SECTION: Active Incidents */
+          .status-title-section {
+            /* Using a CSS gradient to mimic the dark fluid art from your design */
+            background: linear-gradient(135deg, #145566 0%, #162a3f 45%, #663d22 85%, #1a1b1d 100%);
+            padding: 12px 32px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            box-sizing: border-box;
+          }
+
+          .status-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+          }
+
+          /* RIGHT SECTION: The Grey Container */
+          .status-data-section {
+            display: flex;
+            align-items: center;
+            background-color: #d0d6dc;
+            border-radius: 40px;
+            padding: 6px 12px;
+          }
+
+          /* Individual Location Block (NJ / NY) */
+          .location-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 8px;
+          }
+
+          .location-name {
+            color: #1c2b36;
+            font-weight: 600;
+            font-size: 16px;
+          }
+
+          .badges-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          /* White Vertical Line Between Locations */
+          .location-separator {
+            width: 2px;
+            height: 24px;
+            background-color: #ffffff;
+            margin: 0 8px;
+            border-radius: 2px;
+          }
+
+          /* Individual Colored Badges */
+          .incident-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 4px 4px 12px;
+            border-radius: 20px;
+          }
+
+          .badge-level {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1c2b36;
+          }
+
+          /* The Asymmetric White Number Box */
+          .badge-count-wrapper {
+            background-color: #ffffff;
+            border-radius: 6px 20px 20px 6px;
+            padding: 4px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .badge-count {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1c2b36;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+          }
+
+          /* Specific Colors for P1, P2, P3, P4 */
+          .badge-p1 { background-color: #fddce0; }
+          .badge-p2 { background-color: #fce1cd; }
+          .badge-p3 { background-color: #fdf0cc; }
+          .badge-p4 { background-color: #dbe7f8; }
+        `}
+      </style>
+
+      <div className="status-bar-wrapper">
+        <div className="status-bar">
+          {/* LEFT SIDE */}
+          <div className="status-title-section">
+            <span className="status-title">Active Incidents</span>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="status-data-section">
+            {data.map((region, index) => (
+              <React.Fragment key={region.location}>
+                <div className="location-group">
+                  <span className="location-name">{region.location}</span>
+                  <div className="badges-container">
+                    {region.incidents.map((incident) => (
+                      <div
+                        key={incident.level}
+                        className={`incident-badge ${incident.colorClass}`}
+                      >
+                        <span className="badge-level">{incident.level}</span>
+                        <div className="badge-count-wrapper">
+                          <span className="badge-count">{incident.count}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Render the separator only if it's not the last item */}
+                {index < data.length - 1 && (
+                  <div className="location-separator"></div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+
+
+
+
+
+
+
 
 
 
